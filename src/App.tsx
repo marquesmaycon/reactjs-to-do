@@ -1,26 +1,53 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react'
+import * as C from './App.styles';
+import { Task } from './components/Task';
+import { TaskType } from './types/TaskType';
+import { AddArea } from './components/AddArea';
 
-function App() {
+export const App = () => {
+
+  const [list, setList] = useState<TaskType[]>([
+    { id: 1, name: 'Comprar pão', done: true },
+    { id: 2, name: 'Estudar', done: false },
+  ]);
+
+  function handleAddTask(taskName: string) {
+    let newList = [...list]
+    newList.push({
+      id: list.length++,
+      name: taskName,
+      done: false
+    });
+    setList(newList)
+  }
+
+  function handleTaskChange(id: number, done: boolean) {
+    let newList = [...list];
+    for(let i in newList) {
+      if(newList[i].id === id) {
+        newList[i].done = done
+      }
+    }
+    setList(newList)
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <C.Container>
+      <C.Area>
+
+        <C.Header>Lista de Tarefas</C.Header>
+
+        <AddArea onEnter={handleAddTask} />
+
+        {list.map((item, index) => (
+          <Task
+            key={index}
+            task={item} 
+            onChange={handleTaskChange}
+          />
+        ))}
+
+      </C.Area>
+    </C.Container>
   );
 }
-
-export default App;
