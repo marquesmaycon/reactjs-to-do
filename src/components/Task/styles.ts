@@ -5,14 +5,14 @@ type ContainerProps = {
 }
 
 export const Container = styled.div<ContainerProps>`
-
     display: flex;
-    background-color: #20212C;
+    background-color: ${({ theme }) => theme.color.bgInput};
     padding: 10px;
     border-radius: 10px;
     margin-block: 10px;
     align-items: center;
     font-size: 20px;
+    transition: all .5s ease;
 
     input {
         width: 25px;
@@ -21,7 +21,7 @@ export const Container = styled.div<ContainerProps>`
     }
 
     label {
-        color: #CCC;
-        text-decoration: ${p => p.done ? 'line-through' : 'initial'}
+        color: ${({ theme }) => theme.color.text};
+        text-decoration: ${({ done }) => done ? 'line-through' : 'initial'}
     }
 `

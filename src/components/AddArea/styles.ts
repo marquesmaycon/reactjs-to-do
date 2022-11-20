@@ -17,7 +17,7 @@ export const Container = styled.div`
         border: 0;
         background-color: transparent;
         outline: 0;
-        color: #FFF;
+        color: ${({ theme }) => theme.color.text};
         font-size: 20px;
         flex: 1;
     }
