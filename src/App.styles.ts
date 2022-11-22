@@ -10,7 +10,14 @@ export const Container = styled.div`
 export const Area = styled.div`
     margin: auto;
     max-width: 980px;
+    padding: 20px;
+`
+
+export const Area2 = styled.div`
+    background-color: ${({ theme }) => theme.color.bgArea2};
     padding: 10px;
+    border-radius: 15px;
+    margin-block: 10px;
 `
 
 export const Header = styled.h1`

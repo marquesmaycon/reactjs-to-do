@@ -9,7 +9,7 @@ export const Container = styled.div`
         background-color: ${({ theme }) => theme.color.bgButton};
         color: ${({ theme }) => theme.color.textButton};
         border: 0;
-        border-radius: 5px;
+        border-radius: 7.5px;
         transition: all ease .3s;
     }
 

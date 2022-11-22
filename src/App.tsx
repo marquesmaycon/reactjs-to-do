@@ -6,6 +6,7 @@ import { AddArea } from './components/AddArea';
 import { ThemeProvider } from 'styled-components';
 import { lightTheme, darkTheme } from './styles/Theme';
 import { SwitchThemeBtn } from './components/SwitchThemeBtn';
+import { Footer } from './components/Footer';
 
 export const App = () => {
 
@@ -56,7 +57,7 @@ export const App = () => {
         <C.Area>
 
           <C.Header>Lista de Tarefas</C.Header>
-
+          <C.Area2>
           <AddArea onEnter={handleAddTask} />
 
           {list.map((item, index) => (
@@ -66,11 +67,14 @@ export const App = () => {
               onChange={handleTaskChange}
             />
           ))}
+          </C.Area2>
 
           <SwitchThemeBtn 
             text={theme === darkTheme ? 'Tema Claro' : 'Tema Escuro'} 
             switchTheme={handleSwitchTheme} 
           />
+
+          <Footer/>
 
         </C.Area>
       </C.Container>
